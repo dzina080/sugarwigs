@@ -19,14 +19,14 @@ const Nav = ({ onSearch, cartCount, resetSearch }) => {
     if (showSearch && inputRef.current) {
       inputRef.current.focus();
     }
-  }, [showSearch]);
+  }, [showSearch], [onSearch]); ;
 
   // Reset search when route changes (like ProductDetails -> Home)
   useEffect(() => {
     setQuery("");
     setShowSearch(false);
     if (onSearch) onSearch("");
-  }, [location.pathname]);
+  }, [location.pathname], [onSearch]);
 
   const handleSearch = (e) => {
     e.preventDefault();

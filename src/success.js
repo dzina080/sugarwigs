@@ -1,6 +1,6 @@
 // ProductDetails.js
-import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+
+import { useNavigate } from 'react-router-dom';
 import './App.css';
 
 const ProductDetails = ({ items, addToCart }) => {
