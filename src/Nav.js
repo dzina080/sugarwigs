@@ -19,14 +19,14 @@ const Nav = ({ onSearch, cartCount, resetSearch }) => {
     if (showSearch && inputRef.current) {
       inputRef.current.focus();
     }
-  }, [showSearch], [onSearch]); ;
+  }, [showSearch, onSearch]); // ✅ single dependency array
 
   // Reset search when route changes (like ProductDetails -> Home)
   useEffect(() => {
     setQuery("");
     setShowSearch(false);
     if (onSearch) onSearch("");
-  }, [location.pathname], [onSearch]);
+  }, [location.pathname, onSearch]); // ✅ single dependency array
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -84,7 +84,6 @@ const Nav = ({ onSearch, cartCount, resetSearch }) => {
             >
               <h4 style={{ marginBottom: "8px" }}>Contact Info</h4>
               <p>Email: sugarluxurywigs@gmail.com</p>
-              
             </div>
           )}
         </div>
