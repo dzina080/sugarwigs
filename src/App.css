@@ -1,0 +1,432 @@
+body {
+  background-color: #000000;
+}
+
+
+/* Enlarged container */
+.enlarged-view {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
+  z-index: 999;
+  width: 90%;
+  height: 90%;
+  max-width: 500px;
+  text-align: center;
+}
+
+/* Overlay background */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 998;
+}
+
+/* Enlarged image */
+.enlarged-img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* Buttons */
+.button {
+  
+  background-color: #ffffff;
+  color: rgb(4, 0, 0);
+  padding: 12px 20px;
+  margin: 8px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.button:hover {
+  background-color: #ffffff;
+}
+.button:active {
+  transform: scale(0.96);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 10px;
+}
+
+
+
+.card {
+  background: #111;
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 10px;
+}
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+.card h4 {
+  margin: 10px 0 5px;
+  color: #bcbcbcff;
+  text-transform: capitalize;
+}
+.card p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: bolder;
+  color: rgb(218, 165, 32);
+}
+
+/* Expandable List */
+.expandable-list {
+  display: grid;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.expandable-list-item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.expandable-list-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f7f7f7;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: 'Lucida Sans', sans-serif;
+  color: rgb(237, 101, 164);
+}
+.expandable-list-item-header:hover {
+  background-color: #e7e7e7;
+}
+.expandable-list-item-content {
+  padding: 10px;
+}
+.expandable-list-item-content img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.expandable-list-item-content p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: rgb(237, 101, 164);
+  text-align: center;
+}
+.icon {
+  transition: transform 0.3s ease;
+}
+.icon.expand {
+  transform: rotate(90deg);
+}
+
+Nav {
+  margin-bottom: 0px;
+}
+
+h1 {
+  list-style-type: none;
+  height: 50px;
+  margin: 0;
+  margin-left: 2%;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: 'serif';
+  font-size: x-large;
+}
+h2 {
+  list-style-type: none;
+  height: 80px;
+  margin: 0;
+  margin-left: 2%;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.welcome {
+  color: rgb(237, 101, 164);
+  font-size: 60px;
+  text-align: center;
+  font-weight: bold;
+}
+.paraph {
+  color: black;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  padding: 0 20px;
+}
+
+.bas-page {
+  color: rgb(237, 101, 164);
+  font-size: 15px;
+  text-align: center;
+  font-weight: lighter;
+}
+
+.image-gallery,
+.image-gallery2,
+.image-gallery3,
+.image-gallery4 {
+  display: grid;
+  gap: 10px;
+  margin: 0 auto;
+  padding: 0 5px;
+  box-sizing: border-box;
+}
+
+.image-gallery {
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 1500px;
+  opacity: 0.8;
+  margin-top: 20px;
+}
+.image-gallery2 {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1500px;
+}
+.image-gallery3 {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 1200px;
+  max-height: 1200px;
+  opacity: 0.8;
+}
+.image-gallery4 {
+  grid-template-columns: repeat(3, 6fr);
+  max-width: 2000px;
+  max-height: 2000px;
+  margin-left: 0%;
+  margin-top: 10px;
+  padding: 10px 50px;
+  justify-content: center;
+}
+
+.image-gallery img,
+.image-gallery2 img,
+.image-gallery3 img,
+.image-gallery4 img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Form Styling */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 0 10px;
+}
+.reservation-form {
+  width: 400px;
+  padding: 40px;
+  border: 1px solid rgb(237, 101, 164);
+  border-radius: 5px;
+}
+.reservation-form label {
+  display: block;
+  margin-bottom: 5px;
+  color: rgb(237, 101, 164);
+}
+.reservation-form input,
+.reservation-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+.reservation-form button {
+  width: 100%;
+  padding: 10px;
+  margin-left: 7px;
+  background-color: rgb(237, 101, 164);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.reservation-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Nav */
+.nav-links {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  margin-right: 23%;
+}
+li {
+  display: inline;
+  margin-right: 50px;
+}
+.nav-links li a {
+  text-decoration: none;
+  color: rgb(228, 223, 223);
+  font-weight: bold;
+  transition: color 0.3s ease;
+  font-size: smaller;
+  font-family: serif;
+}
+
+/* About Image */
+.about-image {
+  margin-top: 40px;
+  max-width: 25%;
+  max-height: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 37.5%;
+  border-radius: 50%;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .enlarged-view {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .enlarged-img {
+    max-height: 200px;
+  }
+
+  .button {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .reservation-form {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .reservation-form button {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .card h4 {
+    font-size: 10px;
+    
+  }
+
+  .card p {
+    font-size: 13px;
+    
+  }
+
+  .gallery,
+  .image-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+
+
+  .welcome {
+    font-size: 38px;
+  }
+
+  .paraph {
+    font-size: 16px;
+  }
+}
+
+/* Responsive paragraphs under banners */
+.intro-text {
+  color: #bcbcbcff;
+  margin: 0 auto 20px auto ;
+  max-width: 70%;
+  text-align: left;
+  
+}
+
+.intro-text h3 {
+  font-size: 15px;
+  margin-bottom: 12px;
+  font-Weight: 'bold';
+}
+
+/* On tablets */
+@media (max-width: 768px) {
+  .intro-text {
+    max-width: 85%;
+  }
+  .intro-text h3 {
+    font-size: 10px;
+  }
+}
+
+/* On small phones */
+@media (max-width: 480px) {
+  .intro-text {
+    max-width: 90%;
+  }
+  .intro-text h3 {
+    font-size: 7px;
+    line-height: 1.4;
+  }
+}
+.spotlight-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .spotlight-grid {
+    grid-template-columns: repeat(2, 1fr);
+    min-height: 100px;
+   
+  }
+}
+
+@media (max-width: 600px) {
+  .spotlight-grid {
+    grid-template-columns: repeat(1, 1fr);
+    min-height: 100px;
+  }
+
+
+}
