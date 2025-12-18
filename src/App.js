@@ -8,6 +8,8 @@ import Cart from './Cart';
 import Checkout from './Checkout';
 import Success from './success';
 import ProductDetails from './ProductDetails';
+import { useTranslation } from "react-i18next";
+
 
 
 // ✅ Banner images
@@ -90,6 +92,7 @@ import './App.css';
 function App() {
   const [cart, setCart] = useState([]);
   const [currentBanner, setCurrentBanner] = useState(0);
+  const { t } = useTranslation();
 
   const addToCart = (item) => {
     setCart((prev) => [...prev, item]);
@@ -184,18 +187,13 @@ function App() {
 
                   {/* Intro */}
                   <div className="intro-text">
-                    <h3>Sugar Wig est une marque spécialisée dans les perruques et extensions de cheveux de très haute qualité, accessibles à petits prix.</h3> 
-                    <h3>Nous mettons un point d’honneur à proposer des produits 100 % Virgin Hair pour garantir un rendu naturel, doux et durable.</h3>
-                    <h3>Nous offrons également une sélection exclusive de Raw Hair (cheveux bruts non traités), de différentes origines reconnues pour leur excellence :</h3>
-                    <h3>• Cheveux vietnamiens : réputés pour leur résistance et leur texture lisse</h3>
-                    <h3>• Cheveux brésiliens : connus pour leur volume, leur souplesse et leur polyvalence</h3>
-                    <h3>Avec Sugar Wigs, la beauté haut de gamme est à la portée de tous.</h3>
+                    <h3>{t("def")}</h3>
                   </div>
 
                   {/* Best Seller */}
                   <div style={{ textAlign: 'center', margin: '30px 0' }}>
                     <h2 style={{ fontSize: '36px', fontWeight: 'bold', color: '#fff', letterSpacing: '2px', textTransform: 'uppercase' }}>
-                      Best Seller
+                      {t("bestSeller")}
                     </h2>
                   </div>
 
@@ -205,7 +203,7 @@ function App() {
                   {/* Spotlight */}
                   <div style={{ textAlign: 'center', margin: '30px 0' }}>
                     <h2 style={{ fontSize: '36px', fontWeight: 'bold', color: '#fff', letterSpacing: '2px', textTransform: 'uppercase' }}>
-                      SPOTLIGHT
+                      {t("spotlight")}
                     </h2>
                   </div>
 
@@ -257,7 +255,7 @@ function App() {
 <div style={{ textAlign: 'center', margin: '20px 5px' }}>
   {/* Newsletter Subscription */}
   <div style={{ marginTop: '20px' }}>
-    <h3 style={{ color: '#fff', marginBottom: '10px',justifyContent:'center' }}>Abonnez vous</h3>
+    <h3 style={{ color: '#fff', marginBottom: '10px',justifyContent:'center' }}>{t("subscribe")}</h3>
     <form
       onSubmit={(e) => {
         e.preventDefault();
@@ -295,7 +293,7 @@ function App() {
           fontWeight: 'bold',
         }}
       >
-        Subscribe
+        {t("subscribebutton")}
       </button>
     </form>
   </div>
@@ -338,7 +336,8 @@ function App() {
             <Route path="/cart" element={<Cart cart={cart} removeFromCart={removeFromCart} />} />
             <Route path="/checkout" element={<Checkout cart={cart} />} />
             <Route path="/product/:title" element={<ProductDetails items={items} addToCart={addToCart} />} />
-            <Route path="/success/" element={<Success />} />
+            
+            <Route path="/success" element={<Success />} />
           </Routes>
         </div>
 

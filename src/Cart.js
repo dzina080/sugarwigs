@@ -1,13 +1,15 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const Cart = ({ cart, removeFromCart }) => {
+  const { t } = useTranslation();
+
   const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
 
   const handleCheckout = async () => {
-    if (cart.length === 0) return alert("Your cart is empty");
+    if (cart.length === 0) return alert(t("emptyCart"));
 
     try {
-      // Only send necessary data to server for Stripe
       const lineItems = cart.map(item => ({
         title: item.title,
         price: item.price,
@@ -23,24 +25,23 @@ const Cart = ({ cart, removeFromCart }) => {
       const data = await res.json();
 
       if (!data.url) {
-        console.error("Stripe session URL missing:", data);
-        alert("Failed to create checkout session.");
+        alert("Checkout failed.");
         return;
       }
 
-      // Redirect to Stripe-hosted checkout page
       window.location.href = data.url;
     } catch (err) {
       console.error(err);
-      alert("Checkout failed. See console for details.");
+      alert("Checkout failed.");
     }
   };
 
   return (
     <div style={{ padding: "20px", color: "white", backgroundColor: "#000" }}>
-      <h2>Your Cart</h2>
+      <h2>{t("cart")}</h2>
+
       {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <p>{t("emptyCart")}</p>
       ) : (
         <>
           <ul style={{ listStyleType: "none", padding: 0 }}>
@@ -52,51 +53,48 @@ const Cart = ({ cart, removeFromCart }) => {
                   alignItems: "center",
                   marginBottom: "15px",
                   borderBottom: "1px solid #555",
-                  paddingBottom: "10px",
                 }}
               >
-                {/* ✅ Image only shown in cart */}
                 <img
                   src={item.images[0]}
                   alt={item.title}
-                  style={{ width: "80px", marginRight: "15px", borderRadius: "5px" }}
+                  style={{ width: "80px", marginRight: "15px" }}
                 />
                 <div style={{ flex: 1 }}>
-                  <strong>{item.title}</strong> - <span>${item.price}</span>
+                  <strong>{item.title}</strong> – ${item.price}
                 </div>
                 <button
+                  onClick={() => removeFromCart(index)}
                   style={{
-                    padding: "10px 20px",
-                    backgroundColor: "transparent",
+                    background: "transparent",
                     color: "white",
                     border: "2px solid white",
-                    borderRadius: "6px",
                     cursor: "pointer",
-                    fontWeight: "bold",
-                    fontSize: "16px",
+                    fontWeight:"bold"
                   }}
-                  onClick={() => removeFromCart(index)}
                 >
-                  Remove
+                  {t("remove")}
                 </button>
               </li>
             ))}
           </ul>
-          <h3>Total: ${totalPrice.toFixed(2)}</h3>
+
+          <h3>
+            {t("total")}: ${totalPrice.toFixed(2)}
+          </h3>
+
           <button
+            onClick={handleCheckout}
             style={{
               padding: "12px 30px",
-              fontSize: "16px",
-              fontWeight: "bold",
-              borderRadius: "8px",
               border: "2px solid white",
-              backgroundColor: "black",
+              background: "black",
               color: "white",
               cursor: "pointer",
+              fontWeight:"bold"
             }}
-            onClick={handleCheckout}
           >
-            Checkout
+            {t("checkout")}
           </button>
         </>
       )}
@@ -105,6 +103,7 @@ const Cart = ({ cart, removeFromCart }) => {
 };
 
 export default Cart;
+
 
 
 

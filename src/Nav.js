@@ -1,32 +1,43 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logok from "../src/logo.jpg";
+import { useTranslation } from "react-i18next";
 
 // Icons
-import { FiSearch, FiMenu } from "react-icons/fi";
+import { FiSearch, FiMenu, FiGlobe } from "react-icons/fi";
 import { HiOutlineHome, HiOutlineShoppingCart } from "react-icons/hi2";
 
 const Nav = ({ onSearch, cartCount, resetSearch }) => {
+  const { t, i18n } = useTranslation();
+
   const [query, setQuery] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [showContact, setShowContact] = useState(false);
   const inputRef = useRef(null);
 
   const location = useLocation();
+  const prevPath = useRef(location.pathname); // <-- added
+
+  const toggleLanguage = () => {
+    i18n.changeLanguage(i18n.language === "fr" ? "en" : "fr");
+  };
 
   // Focus input when search opens
   useEffect(() => {
     if (showSearch && inputRef.current) {
       inputRef.current.focus();
     }
-  }, [showSearch, onSearch]); // ✅ single dependency array
+  }, [showSearch]);
 
-  // Reset search when route changes (like ProductDetails -> Home)
+  // Reset search ONLY when route changes
   useEffect(() => {
-    setQuery("");
-    setShowSearch(false);
-    if (onSearch) onSearch("");
-  }, [location.pathname, onSearch]); // ✅ single dependency array
+    if (location.pathname !== prevPath.current) {
+      setQuery("");
+      setShowSearch(false);
+      if (onSearch) onSearch("");
+      prevPath.current = location.pathname;
+    }
+  }, [location.pathname, onSearch]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -50,9 +61,9 @@ const Nav = ({ onSearch, cartCount, resetSearch }) => {
         position: "relative",
       }}
     >
-      {/* LEFT SIDE: Hamburger Dropdown + Home */}
+      {/* LEFT SIDE */}
       <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-        {/* Hamburger Dropdown */}
+        {/* Hamburger */}
         <div style={{ position: "relative" }}>
           <button
             onClick={() => setShowContact((prev) => !prev)}
@@ -67,6 +78,7 @@ const Nav = ({ onSearch, cartCount, resetSearch }) => {
           >
             <FiMenu style={{ color: "white", fontSize: "28px" }} />
           </button>
+
           {showContact && (
             <div
               style={{
@@ -82,13 +94,13 @@ const Nav = ({ onSearch, cartCount, resetSearch }) => {
                 minWidth: "220px",
               }}
             >
-              <h4 style={{ marginBottom: "8px" }}>Contact Info</h4>
+              <h4 style={{ marginBottom: "8px" }}>{t("contact")}</h4>
               <p>Email: sugarluxurywigs@gmail.com</p>
             </div>
           )}
         </div>
 
-        {/* Home Button */}
+        {/* Home */}
         <Link to="/">
           <HiOutlineHome
             style={{
@@ -97,13 +109,11 @@ const Nav = ({ onSearch, cartCount, resetSearch }) => {
               cursor: "pointer",
               transition: "transform 0.2s ease-in-out",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.2)")}
-            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           />
         </Link>
       </div>
 
-      {/* CENTER: Logo */}
+      {/* LOGO */}
       <img
         src={logok}
         alt="Logo"
@@ -111,22 +121,17 @@ const Nav = ({ onSearch, cartCount, resetSearch }) => {
           maxWidth: "60px",
           maxHeight: "60px",
           borderRadius: "8px",
-          margin: "0 auto",
+          marginLeft: "50px",
         }}
       />
 
-      {/* RIGHT SIDE: Search + Cart */}
+      {/* RIGHT SIDE */}
       <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-        {/* Search Button */}
+        {/* Search */}
         <div style={{ position: "relative" }}>
           <button
             onClick={() => setShowSearch((prev) => !prev)}
-            style={{
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              padding: "4px",
-            }}
+            style={{ background: "none", border: "none", cursor: "pointer" }}
           >
             <FiSearch style={{ color: "white", fontSize: "24px" }} />
           </button>
@@ -136,48 +141,35 @@ const Nav = ({ onSearch, cartCount, resetSearch }) => {
               onSubmit={handleSearch}
               style={{
                 position: "absolute",
-                right: "0",
+                right: 0,
                 top: "110%",
                 display: "flex",
                 alignItems: "center",
                 background: "#111",
                 padding: "4px 6px",
                 borderRadius: "6px",
-                boxShadow: "0 2px 6px rgba(0,0,0,0.5)",
-                minWidth: "150px",
-                maxWidth: "250px",
               }}
             >
               <input
                 ref={inputRef}
                 type="text"
-                placeholder="Search..."
+                placeholder={t("search")}
                 value={query}
                 onChange={(e) => {
-                  const value = e.target.value;
-                  setQuery(value);
-                  if (onSearch) onSearch(value);
+                  setQuery(e.target.value);
+                  if (onSearch) onSearch(e.target.value);
                 }}
                 style={{
-                  flex: 1,
                   border: "none",
                   outline: "none",
                   background: "transparent",
                   color: "white",
-                  padding: "4px 6px",
-                  fontSize: "14px",
                 }}
               />
               {query && (
                 <span
                   onClick={clearSearch}
-                  style={{
-                    cursor: "pointer",
-                    color: "white",
-                    fontSize: "16px",
-                    fontWeight: "bold",
-                    marginLeft: "4px",
-                  }}
+                  style={{ cursor: "pointer", color: "white" }}
                 >
                   ×
                 </span>
@@ -186,17 +178,22 @@ const Nav = ({ onSearch, cartCount, resetSearch }) => {
           )}
         </div>
 
-        {/* Cart Button */}
+        {/* Language */}
+        <button
+          onClick={toggleLanguage}
+          style={{ background: "none", border: "none", cursor: "pointer" }}
+        >
+          <FiGlobe style={{ color: "white", fontSize: "22px" }} />
+        </button>
+
+        {/* Cart */}
         <Link to="/cart">
           <HiOutlineShoppingCart
             style={{
               color: "gold",
               fontSize: "28px",
               cursor: "pointer",
-              transition: "transform 0.2s ease-in-out",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.2)")}
-            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           />
         </Link>
       </div>
@@ -205,6 +202,8 @@ const Nav = ({ onSearch, cartCount, resetSearch }) => {
 };
 
 export default Nav;
+
+
 
 
 

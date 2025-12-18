@@ -1,9 +1,11 @@
 // ProductDetails.js
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from "react-i18next";
 import { useParams, useNavigate } from 'react-router-dom';
 import './App.css';
 
 const ProductDetails = ({ items, addToCart }) => {
+  const { t } = useTranslation();
   const { title } = useParams();
   const navigate = useNavigate();
   const product = items.find((item) => item.title === title);
@@ -142,7 +144,7 @@ const ProductDetails = ({ items, addToCart }) => {
       {/* Size Selector */}
       {product.sizes && product.sizes.length > 0 && (
         <div style={{ marginBottom: '25px' }}>
-          <label style={{ fontSize: '18px', marginRight: '10px', fontWeight: 'bold' }}>Taille :</label>
+          <label style={{ fontSize: '18px', marginRight: '10px', fontWeight: 'bold' }}>{t("size")} :</label>
           <select
             value={selectedSizeIndex}
             onChange={(e) => setSelectedSizeIndex(Number(e.target.value))}
@@ -180,14 +182,14 @@ const ProductDetails = ({ items, addToCart }) => {
         }}
       >
         <h3 style={{ color: 'white', marginBottom: '15px', textAlign: 'center' }}>
-  🚚 Livraison & Retours
+  🚚 {t("shippingTitle")}
 </h3>
 
-<p style={{ marginBottom: '15px', fontSize: '16px' }}>
-  ⏳ Livraison standard en <strong>5 à 7 jours ouvrables</strong> après la confirmation de votre commande.
+<p style={{ marginBottom: '15px', fontSize: '16px',textAlign: 'center'  }}>
+  ⏳ {t("shippingText")}
 </p>
-<p style={{ fontSize: '16px' }}>
-  🔄 Si vous n'êtes pas entièrement satisfait, vous pouvez demander un retour ou un remboursement dans un délai de <strong>30 jours</strong> après la livraison.
+<p style={{ fontSize: '16px', textAlign: 'center' }}>
+  🔄 {t("returnText")}
 </p>
 
       </div>
@@ -233,7 +235,7 @@ const ProductDetails = ({ items, addToCart }) => {
             navigate('/cart');
           }}
         >
-          Ajouter au panier
+          {t("addToCart")}
         </button>
 
         <button
@@ -258,7 +260,7 @@ const ProductDetails = ({ items, addToCart }) => {
           }}
           onClick={() => navigate(-1)}
         >
-          Retour
+          {t("back")}
         </button>
       </div>
     </div>

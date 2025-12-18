@@ -1,9 +1,10 @@
-// ProductDetails.js
+import React, { useEffect, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 import './App.css';
-
-const ProductDetails = ({ items, addToCart }) => {
+import { useTranslation } from "react-i18next";
+const Success = ({ items, addToCart }) => {
+const { t } = useTranslation();
 const navigate = useNavigate();
 const handleGoHome = () => {
         navigate('/');}
@@ -27,7 +28,7 @@ const handleGoHome = () => {
         }}
       >
         <h3 style={{ color: 'white', marginBottom: '15px', textAlign: 'center' }}>
-          Votre commande a été passée avec succèss, un courriel de confirmation sera envoyée a votre addresse email
+          {t("orderSuccess")}
         </h3>
         
        
@@ -77,4 +78,4 @@ const handleGoHome = () => {
   );
 };
 
-export default ProductDetails;
+export default Success;

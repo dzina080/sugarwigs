@@ -23,7 +23,7 @@ exports.handler = async (event, context) => {
         product_data: { name: item.title },
       },
       quantity: item.quantity || 1,
-      tax_rates: ["txr_1ScwBQ4jmY3lwMWMWubr6TPR"], // your tax rate ID
+      
     }));
 
     // Create checkout session
