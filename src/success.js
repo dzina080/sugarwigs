@@ -71,7 +71,7 @@ const handleGoHome = () => {
           }}
           onClick={handleGoHome}
         >
-          Accueil
+          {t("home")}
         </button>
       </div>
     </div>

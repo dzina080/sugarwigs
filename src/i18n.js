@@ -23,7 +23,7 @@ i18n.use(initReactI18next).init({
         home: "Home",
         contact: "Contact Info",
         orderSuccess:
-          "Your order was successful. A confirmation email has been sent.",
+          "Your order was proccessed successfully. A confirmation email will been sent soon.",
         shippingTitle: "Shipping & Returns",
         shippingText:
           "Standard delivery in 5–7 business days after order confirmation.",
@@ -50,7 +50,7 @@ i18n.use(initReactI18next).init({
         home: "Accueil",
         contact: "Contact",
         orderSuccess:
-          "Votre commande a été passée avec succès. Un courriel de confirmation a été envoyé.",
+          "Votre commande a été passée avec succès. Vous recevrez bientôt Un courriel de confirmation .",
         shippingTitle: "Livraison & retours",
         shippingText:
           "Livraison standard en 5 à 7 jours ouvrables après confirmation de la commande.",
