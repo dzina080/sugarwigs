@@ -1,4 +1,5 @@
 [build]
   functions = "netlify/functions"
-  publish = "build" # or "build" if using Vite/React
+  publish = "build"
+  command = "npm install --legacy-peer-deps && npm run build"
 
