@@ -18,7 +18,7 @@ exports.handler = async (event, context) => {
     // Convert cart to Stripe line items
     const line_items = cart.map((item) => ({
       price_data: {
-        currency: "cad",
+        currency: "usd",
         unit_amount: Math.round(item.price * 100),
         product_data: { name: item.title },
       },
@@ -55,8 +55,8 @@ exports.handler = async (event, context) => {
 
       line_items,
 
-      success_url: "https://sugarwigs.com/success",
-      cancel_url: "https://sugarwigs.com/",
+      success_url: "https://sugarwigs.netlify.app/success",
+      cancel_url: "https://sugarwigs.netlify.app/",
     });
 
     return {
