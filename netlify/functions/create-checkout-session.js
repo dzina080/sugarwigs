@@ -18,12 +18,12 @@ exports.handler = async (event, context) => {
     // Convert cart to Stripe line items
     const line_items = cart.map((item) => ({
       price_data: {
-        currency: "usd",
+        currency: "cad",
         unit_amount: Math.round(item.price * 100),
         product_data: { name: item.title },
       },
       quantity: item.quantity || 1,
-      tax_rates: ["txr_1ScwBQ4jmY3lwMWMWubr6TPR"], // your tax rate ID
+      
     }));
 
     // Create checkout session
