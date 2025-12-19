@@ -55,8 +55,8 @@ exports.handler = async (event, context) => {
 
       line_items,
 
-      success_url: "https://sugarwigs.netlify.app/success",
-      cancel_url: "https://sugarwigs.netlify.app/",
+      success_url: "https://sugarwigs.com/success",
+      cancel_url: "https://sugarwigs.com/",
     });
 
     return {
