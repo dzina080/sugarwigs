@@ -48,7 +48,7 @@ exports.handler = async (event, context) => {
           shipping_rate_data: {
             display_name: "Standard Shipping",
             type: "fixed_amount",
-            fixed_amount: { amount: 1500, currency: "cad" },
+            fixed_amount: { amount: 1, currency: "cad" },
           },
         },
       ],
