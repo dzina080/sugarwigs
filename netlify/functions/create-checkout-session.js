@@ -19,11 +19,11 @@ exports.handler = async (event, context) => {
     const line_items = cart.map((item) => ({
       price_data: {
         currency: "cad",
-        unit_amount: Math.round(item.price * 100),
+        unit_amount: Math.round(1 * 100),
         product_data: { name: item.title },
       },
       quantity: item.quantity || 1,
-      
+      tax_rates: ["txr_1ScwBQ4jmY3lwMWMWubr6TPR"], // your tax rate ID
     }));
 
     // Create checkout session
@@ -55,8 +55,8 @@ exports.handler = async (event, context) => {
 
       line_items,
 
-      success_url: "https://sugarwigs.netlify.app/success",
-      cancel_url: "https://sugarwigs.netlify.app/",
+      success_url: "https://sugarwigs.com/success",
+      cancel_url: "https://sugarwigs.com/",
     });
 
     return {
