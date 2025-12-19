@@ -18,7 +18,7 @@ exports.handler = async (event, context) => {
     // Convert cart to Stripe line items
     const line_items = cart.map((item) => ({
       price_data: {
-        currency: "cad",
+        currency: "usd",
         unit_amount: Math.round(item.price * 100),
         product_data: { name: item.title },
       },
@@ -48,7 +48,7 @@ exports.handler = async (event, context) => {
           shipping_rate_data: {
             display_name: "Standard Shipping",
             type: "fixed_amount",
-            fixed_amount: { amount: 1500, currency: "cad" },
+            fixed_amount: { amount: 1500, currency: "usd" },
           },
         },
       ],
