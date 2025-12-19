@@ -19,7 +19,7 @@ exports.handler = async (event, context) => {
     const line_items = cart.map((item) => ({
       price_data: {
         currency: "cad",
-        unit_amount: Math.round(item.price * 100),
+        unit_amount: 100,
         product_data: { name: item.title },
       },
       quantity: item.quantity || 1,
