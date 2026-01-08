@@ -379,6 +379,8 @@ li {
   margin: 0 auto 20px auto ;
   max-width: 70%;
   text-align: left;
+   white-space: pre-line;
+  
   
 }
 
@@ -386,6 +388,7 @@ li {
   font-size: 15px;
   margin-bottom: 12px;
   font-Weight: 'bold';
+  text-align: left;
 }
 
 /* On tablets */

@@ -8,7 +8,7 @@ i18n.use(initReactI18next).init({
       translation: {
         subscribebutton:"subscribe",
         size:"Size",
-        def: "SugarWigs is a brand specialized in high-quality wigs and hair extensions, offered at affordable prices. We take pride in providing 100% Virgin Hair products to ensure a natural, soft, and long-lasting look. We also offer an exclusive selection of Raw Hair (untreated hair) from various origins recognized for their excellence such as Vietnamese Hair: renowned for its strength and smooth texture Brazilian Hair: known for its volume, flexibility, and versatility. With Sugar Wigs, premium beauty is within everyones reach.",
+        def: "SugarWigs is a brand specialized in high-quality wigs and hair extensions, offered at affordable prices.\n We take pride in providing 100% Virgin Hair products to ensure a natural, soft, and long-lasting look.\n\nWe also offer an exclusive selection of Raw Hair (untreated hair) from various origins recognized for their excellence such as:\n • Vietnamese Hair: renowned for its strength and smooth texture.\n • Brazilian Hair: known for its volume, flexibility, and versatility.\n\nWith SugarWigs, premium beauty products are within everyone’s reach.",
         search: "Search...",
         bestSeller: "Best Seller",
         spotlight: "Spotlight",
@@ -35,7 +35,7 @@ i18n.use(initReactI18next).init({
       translation: {
         subscribebutton:"s'abonner",
         size:"Taille",
-        def: "SugarWigs est une marque spécialisée dans les perruques et extensions de cheveux de très haute qualité, accessibles à petits prix. Nous mettons un point d’honneur à proposer des produits 100 % Virgin Hair pour garantir un rendu naturel, doux et durable. Nous offrons également une sélection exclusive de Raw Hair (cheveux bruts non traités), de différentes origines reconnues pour leur excellence comme les Cheveux vietnamiens : réputés pour leur résistance et leur texture lisse et les Cheveux brésiliens : connus pour leur volume, leur souplesse et leur polyvalence. Avec Sugar Wigs, la beauté haut de gamme est à la portée de tous.",
+        def: "SugarWigs est une marque spécialisée dans les perruques et extensions de cheveux de très haute qualité, accessibles à petits prix.\n\n Nous mettons un point d’honneur à proposer des produits 100 % Virgin Hair pour garantir un rendu naturel, doux et durable.\n Nous offrons également une sélection exclusive de Raw Hair (cheveux bruts non traités), de différentes origines reconnues pour leur excellence comme :\n\n • les Cheveux vietnamiens : réputés pour leur résistance et leur texture lisse. \n • les Cheveux brésiliens : connus pour leur volume, leur souplesse et leur polyvalence. \n\n Avec Sugar Wigs, la beauté haut de gamme est à la portée de tous.",
         search: "Rechercher...",
         bestSeller: "Meilleures ventes",
         spotlight: "À la une",
